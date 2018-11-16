@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "article",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "text"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "body": {
+      "default": "",
+      "type": "text"
+    },
+    "claps": {
+      "default": "",
+      "type": "integer"
+    },
+    "article_img": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
