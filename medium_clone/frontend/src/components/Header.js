@@ -1,17 +1,29 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import  SignedInLink  from './navlinks/signedInLink'
+import { SignedOutLink } from './navlinks/SignedOutLink'
+import { connect } from 'react-redux'
 
-export default class Header extends Component {
+class Header extends Component {
 	render() {
+		const { userId } = this.props;
 		return(
 			<header>
 				<Link to="/" className="main-heading">Medium</Link>
 				<div className="top-link">
-					<Link to="/article">create a story</Link>
-					<Link to="/login">Signin</Link>
-					<Link to="/signup" className="get-started">Get started</Link>
+					{
+						userId.jwt ? <SignedInLink /> : <SignedOutLink />
+					}
 				</div>
 			</header>
 			)
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		userId: state.auth.userData
+	}
+} 
+
+export default connect(mapStateToProps)(Header)

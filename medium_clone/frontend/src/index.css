@@ -18,11 +18,11 @@ code {
 	width: 100%;
 	margin-top: 20px;
 	padding: 8px;
-	border-radius: 10px;
+	border-radius: 5px;
 	outline: none;
 }
 .login_form {
-	margin: 0 auto;
+	margin: 100px auto;
 	width: 30%;
 }
 .checkbox {
@@ -30,7 +30,7 @@ code {
 }
 .signup_form {
 	width: 30%;
-	margin: 0 auto;
+	margin: 50px auto;
 }
 /*h1 {
 	text-align: center;
@@ -38,7 +38,11 @@ code {
 header {
 	display: flex;
 	justify-content: space-between;
-	padding: 40px;
+	padding: 10px;
+	box-shadow: 0 0 7px .5px #bdc0c8;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 .main-heading {
 	margin: 0;
@@ -46,25 +50,86 @@ header {
 	text-decoration: none;
 	color: black;
 	font-weight: 600;
+	margin: 10px 0 0 50px;
 }
 .new-article {
 	margin: 0 auto;
-	width: 40%;
+	width: 80%;
 }
 .main-wrapper {
-	width: 80%;
-	margin: 0 auto;
+	width: 70%;
+	margin: 100px auto;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr); 
+	grid-gap: 40px;
 }
 .get-started {
 	border: 1px solid grey;
 	padding: 5px;
-	margin-left: 10px;
+	margin-left: 20px;
 	text-decoration: none;
+	color: grey;
 }
 .btn {
 	width: 20%;
 	background-color: grey;
 	margin-top: 30px;
+	background-color: white;
+	display: block;
+}
+.btn:hover {
+	background-color: black;
+	color: white;
+	outline: none;
+}
+li {
+	list-style: none;
+	display: inline-block;
+}
+.article-title {
+	color: black;
+	list-style: none;
+	font-size: 20px;
+	font-weight: 600;
+	text-decoration: none;
+}
+.article-container {
+	width: 80%;
+	margin: 30px auto;
+}
+.article-container h1 {
+	font-size: 50px;
+	font-weight: 600;
+}
+.description {
+	color: grey;
+	font-weight: 400;
+	font-size: 25px;
+}
+.create-btn {
+	margin-right: 20px;
+}
+.article-wrapper h3 {
+	color: grey;
+	font-weight: 400;
+}
+.article-created {
+	font-size: 12px;
+}
+.signedin-link {
+	color: grey;
+	text-decoration: none;
+}
+.top-link {
+	margin-right: 50px;
+}
+
+.new-article input {
+	border: none;
+	padding: 0;
+	margin-top: 20px;
+}
+.new-article textarea {
+	border: none;
+	margin-top: 20px;
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { signUp } from './../Actions/action'
 
 class Signup extends Component {
 	constructor(props) {
@@ -29,22 +31,9 @@ class Signup extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		fetch("http://localhost:1337/users", {
-			method:"POST",
-			headers: {
-				"Content-Type": "application/json",
-				"Accept" : "application/json"
-			},
-			body: JSON.stringify(this.state)
-		}).then(res => {
-			if(res.ok ) 
-				{
-					alert("SingUp Success"); 
-					this.props.history.push('/login')
-				} else {
-					alert("Unable to Signup")
-				}
-		})
+		this.props.signUp(this.state)
+		this.props.history.push('/')
+		
 	}
 	 	render() {
 		return (
@@ -60,4 +49,11 @@ class Signup extends Component {
 			)
 	}
 }
-export default Signup;
+
+const mapDispatchToProps =(dispatch) => {
+	return {
+		signUp: (d) => dispatch(signUp(d))
+	}
+}
+
+export default connect(null, mapDispatchToProps)(Signup);

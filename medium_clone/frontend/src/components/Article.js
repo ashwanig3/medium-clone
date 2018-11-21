@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { postArticle } from './../Actions/action'
+import { Redirect } from 'react-router-dom'
 
-export default class Article extends Component {
+class Article extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -11,16 +14,10 @@ export default class Article extends Component {
 		}
 	}
 
-	onSubmit = () => {
-		fetch("http://localhost:1337/articles", {
-			method: 'POST',
-			headers: {
-				"Content-Type": "application/json",
-				"Accept" : "application/json"
-			},
-			body: JSON.stringify(this.state) 
-		})
-		this.props.history.push('/articles');
+	onSubmit = (e) => {
+		e.preventDefault();
+		this.props.post(this.state);
+		this.props.history.push('/')
 	}
 
 	setTitle = (e) => {
@@ -42,15 +39,32 @@ export default class Article extends Component {
 	}
 
 	render() {
+		const { articles, userData } = this.props;
+		console.log(articles)
+		if(!userData.jwt) return <Redirect to='/' />
 		return(
 			<div className="new-article">
-				<h2>You are successfully login</h2>
-				<h3>Create a new story</h3>
+				<h1>Create a new story</h1>
 				<input type="text" placeholder="title" onChange={this.setTitle} />
 				<input type="text" placeholder="description" onChange={this.setDescription} />
 				<textarea rows="7" cols="60" placeholder="body" onChange={this.setBody}></textarea>
-				<button className="btn" onClick={this.onSubmit}>submit</button>
+				<button className="btn" onClick={this.onSubmit}>Ready to publish?</button>
 			</div>
 			)
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		articles: state.article.articles,
+		userData: state.auth.userData
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		post: (data) => dispatch(postArticle(data))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Article)
