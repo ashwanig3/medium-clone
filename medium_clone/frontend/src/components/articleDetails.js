@@ -29,7 +29,7 @@ const ArticleDetails = (props) => {
 const mapStateToProps = (state, ownProps) => {
 	const id = ownProps.match.params.id;
 		return {
-			articles : state.article.articles[0],
+			articles : state.article.articles,
 			id
 		}
 }

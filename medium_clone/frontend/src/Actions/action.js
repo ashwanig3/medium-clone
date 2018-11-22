@@ -126,3 +126,13 @@ export function clapsIncrement(noOfClaps) {
 		noOfClaps
 	}
 }
+
+//for search article
+
+export function searchArticle(value) {
+	console.log(value)
+	return {
+		type: 'SEARCH_ARTICLE',
+		value
+	}
+}

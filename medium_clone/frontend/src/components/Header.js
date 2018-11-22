@@ -20,6 +20,7 @@ class Header extends Component {
 	}
 }
 
+
 const mapStateToProps = (state) => {
 	return {
 		userId: state.auth.userData

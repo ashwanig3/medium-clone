@@ -45,9 +45,9 @@ class Article extends Component {
 		return(
 			<div className="new-article">
 				<h1>Create a new story</h1>
-				<input type="text" placeholder="title" onChange={this.setTitle} />
-				<input type="text" placeholder="description" onChange={this.setDescription} />
-				<textarea rows="7" cols="60" placeholder="body" onChange={this.setBody}></textarea>
+				<input type="text" placeholder="Title" onChange={this.setTitle} />
+				<input type="text" placeholder="Description" onChange={this.setDescription} />
+				<textarea rows="7" cols="60" placeholder="Body" onChange={this.setBody}></textarea>
 				<button className="btn" onClick={this.onSubmit}>Ready to publish?</button>
 			</div>
 			)

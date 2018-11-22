@@ -7,16 +7,24 @@ class Articles extends Component {
 	constructor(props) {
 		super(props);
 	}
-	componentWillMount = () =>  {
+	componentDidMount = () =>  {
 		this.props.articleList()
 	}
 
 	render() {
-		const {articles} = this.props;
+		const {articles, seareched } = this.props;
+		let displayArticle;
+		console.log(seareched)
+		if(seareched.length > 0) {
+			displayArticle = seareched;
+		} else {
+			displayArticle =  articles
+		}
+
 		return(
 			<div className= "main-wrapper">
 				{
-					articles && articles.map((article,i) => 
+					displayArticle && displayArticle.map((article,i) => 
 						(<div className="article-wrapper" key={i}>
 													<Link to={`/details/${article.id}`} className="article-title">{article.title}</Link>
 													<h3>{article.description}</h3>
@@ -37,7 +45,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
 	return {
-		articles: state.article.articles[0]
+		articles: state.article.articles,
+		seareched: state.article.searchedArticle
 	}
 }
 
